@@ -10,7 +10,7 @@ const Menu = () => {
       <Link to="/">Home</Link>
         <Link to="/AddProducts">Add</Link>
         <Search />
-        <Cart />
+        <Cart style={{float:'left'}}/>
       </ul>
     </div>
   )

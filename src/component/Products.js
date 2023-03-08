@@ -2,16 +2,14 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
-function Products() {
-  const [products, setProducts] = useState([]);
+import {useSelector} from 'react-redux'
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get("http://localhost:5000/products");
-      setProducts(response.data);
-    }
-    fetchData();
-  }, []);
+function Products() {
+  
+
+    const products = useSelector((state) => state.products)
+
+  
 
   const [cart, setCart] = useState([]);
 
@@ -41,7 +39,7 @@ function Products() {
                   <Card.Text>Price: {product.price} DH</Card.Text>
 
                   <div >
-                    <Button
+                    {/* <Button
                       onClick={() => {
                         const newProducts = [...products];
                         const index = newProducts.findIndex(
@@ -53,7 +51,7 @@ function Products() {
                       }}
                     >
                       -
-                    </Button>
+                    </Button> */}
                     <input style={{width:'30px'}}
                       type="text"
                       value={product.value || 0}
@@ -63,10 +61,10 @@ function Products() {
                           (p) => p.id === product.id
                         );
                         newProducts[index].value = parseInt(event.target.value);
-                        setProducts(newProducts);
+                        // setProducts(newProducts);
                       }}
                     />
-                    <Button
+                    {/* <Button
                       onClick={() => {
                         const newProducts = [...products];
                         const index = newProducts.findIndex(
@@ -78,7 +76,7 @@ function Products() {
                       }}
                     >
                       +
-                    </Button>
+                    </Button> */}
                   </div>
 
                   <div className="product-action">

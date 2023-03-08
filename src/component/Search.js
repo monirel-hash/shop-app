@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
 function Search() {
+  const dispatch = useDispatch()
   const [searchValue, setSearchValue] = useState('');
 
   const searchPays = async (keyword) => {
@@ -12,7 +14,10 @@ function Search() {
 
   const handleSearch = async () => {
     const data = await searchPays(searchValue);
-    console.log(data); // Or do something with the data
+    dispatch({
+      type: "SET_PRODUCTS",
+      payload: data
+    })
     
   }
 
